@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh; /* full viewport height */
+}
+
+/* main container that holds all the grid cells */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 480px; /* 16 cells x 30px */
+}
+
+/* styling for each individual cell in the grid */
+.grid-cell {
+    width: 30px;
+    height: 30px;
+    background: rgb(255, 206, 213);
+    border: 1px solid white;
+    box-sizing: border-box; /* include border in the total width/height calculation */
+}
+
+.hovered {
+    background-color: grey;
+}
+
+#resize {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
