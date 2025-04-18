@@ -1,8 +1,70 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     justify-content: center; 
     align-items: center;
     height: 100vh; /* full viewport height */
+    margin: 0;
+}
+
+h1 {
+    color: goldenrod;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+}
+
+.design {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-red,
+.middle-red,
+.bottom-red {
+    background-color: #b81b23;
+    width: 680px;
+}
+
+.top-red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 100px;
+}
+
+.middle-red {
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-red {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+button {
+    width: 70px;
+    height: 70px;
+    font-size: 12px;
+    border-radius: 90%;
+    border: none;
+    color: rgb(194, 194, 194);
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 680px;
 }
 
 /* main container that holds all the grid cells */
@@ -10,23 +72,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 480px; /* 16 cells x 30px */
+    height: 480px; 
 }
 
 /* styling for each individual cell in the grid */
 .grid-cell {
-    width: 30px;
-    height: 30px;
-    background: rgb(255, 206, 213);
-    border: 1px solid white;
-    box-sizing: border-box; /* include border in the total width/height calculation */
+    background: #dedede;
+    border: solid 0.6px #b5b5b5;
+    flex: 0 0 auto;
 }
 
 .hovered {
-    background-color: grey;
-}
-
-#resize {
-    margin-bottom: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+    background-color: #46484a;
 }

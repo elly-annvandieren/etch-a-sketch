@@ -1,24 +1,47 @@
-// Get a reference to the container element where we'll add the cells
 const gridContainer = document.querySelector('#grid');
 const resizeButton = document.querySelector('#resize');
 
-// Loop 256 times (16 x 16) to create a total of 256 grid cells
-for (let i = 0; i < 16 * 16; i++) {
-    // Create a new <div> element to act as a single cell
-    const cell = document.createElement('div');
-    // Add the class 'grid-cell' to the new div so it gets styled properly
-    cell.className = 'grid-cell';
-    // Append the cell to the grid container in the DOM
-    gridContainer.appendChild(cell);
+function createGrid(squaresPerSide) {
+    gridContainer.innerHTML = ''; // Clear old grid
+
+    const cellSize = 480 / squaresPerSide;
+
+    for (let i = 0; i < squaresPerSide * squaresPerSide; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+        cell.style.width = `${cellSize}px`;
+        cell.style.height = `${cellSize}px`;
+
+        cell.addEventListener('mouseover', () => {
+            cell.classList.add('hovered');
+        });
+
+        gridContainer.appendChild(cell);
+    }
 }
 
-// Select all elements with the class 'grid-cell'
-const gridCells = gridContainer.querySelectorAll('.grid-cell');
+// Default grid
+createGrid(16);
 
+// Resize handler
+resizeButton.addEventListener('click', () => {
+    let input = prompt('Enter number of squares per side (max 100):');
+    let size = parseInt(input);
 
-// Loop through each cell and add a 'mouseover' event listener
-gridCells.forEach(cell => {
-    cell.addEventListener('mouseover', () => {
-        cell.classList.add('hovered');
+    if (isNaN(size) || size < 1) {
+        alert('Please enter a valid number.');
+    } else if (size > 100) {
+        alert('Maximum allowed is 100.');
+    } else {
+        createGrid(size);
+    }
+});
+
+const resetButton = document.querySelector('#reset');
+
+resetButton.addEventListener('click', () => {
+    const cells = document.querySelectorAll('.grid-cell');
+    cells.forEach(cell => {
+        cell.classList.remove('hovered');
     });
 });
